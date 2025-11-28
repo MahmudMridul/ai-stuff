@@ -1,4 +1,5 @@
 import pandas as pd
+
 # import os
 
 pd.set_option("display.max_rows", None)
@@ -14,8 +15,8 @@ from sklearn.preprocessing import LabelEncoder
 
 data_set = pd.read_csv("datasets/play_tennis.csv")
 
-features = data_set.drop(['Day', 'PlayTennis'], axis=1)
-label = data_set['PlayTennis']
+features = data_set.drop(["Day", "PlayTennis"], axis=1)
+label = data_set["PlayTennis"]
 
 feature_encoders = {}
 
@@ -27,18 +28,20 @@ for column in features.columns:
 target_encoder = LabelEncoder()
 label = target_encoder.fit_transform(label)
 
-x_train, x_test, y_train, y_test = train_test_split(features, label, test_size=0.3, random_state=42, stratify=label)
+x_train, x_test, y_train, y_test = train_test_split(
+    features, label, test_size=0.3, random_state=42, stratify=label
+)
 
 model = GradientBoostingClassifier(
-    loss='log_loss',
+    loss="log_loss",
     learning_rate=0.1,
     n_estimators=25,
-    criterion='squared_error',
+    criterion="squared_error",
     min_samples_split=5,
     min_samples_leaf=3,
     max_depth=1,
     max_features=3,
-    verbose=3
+    verbose=3,
 )
 
 model.fit(x_train, y_train)
@@ -48,5 +51,3 @@ accuracy = accuracy_score(y_test, y_pred)
 print(target_encoder.inverse_transform(y_test))
 print(target_encoder.inverse_transform(y_pred))
 print(accuracy)
-
-
