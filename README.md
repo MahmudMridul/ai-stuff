@@ -1,6 +1,14 @@
 # ML & AI
 
-This repository contains all resources I am using to learn and practice ML and AI.
+Resources to learn and practice AI.
+
+## Commit Tags
+
+1. `dataset:` Change anything in datasets folder.
+2. `model:` Change anything in any model.
+3. `doc:` Change documentation.
+4. `<folder_name>:` Changes to corresponding <folder_name>. For example - `numpy: add conditonal expressino example`.
+5. `chore:` Change in file structure or other project related house keeping. 
 
 ## Resources
 
